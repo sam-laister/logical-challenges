@@ -54,3 +54,64 @@ func Day02PartA(input string, verbose bool) (int, error) {
 
 	return total, nil
 }
+
+func Day02PartB(input string, verbose bool) (int, error) {
+	pairs := strings.Split(strings.TrimSpace(input), ",")
+
+	var invalidIds []int
+
+	for _, i := range pairs {
+		pair := strings.Split(i, "-")
+
+		lowerBound, _ := strconv.Atoi(pair[0])
+		upperBound, _ := strconv.Atoi(pair[1])
+
+		for diff := range upperBound - lowerBound + 1 {
+			curr := diff + lowerBound
+			strValue := strconv.Itoa(curr)
+
+			if !isValidPartB(strValue) {
+				continue
+			}
+
+			if verbose {
+				fmt.Printf("Found match: %d\n", curr)
+			}
+
+			invalidIds = append(invalidIds, curr)
+		}
+	}
+
+	total := 0
+	for _, num := range invalidIds {
+		total += num
+	}
+
+	return total, nil
+}
+
+func isValidPartB(pattern string) bool {
+
+main:
+	for splitLen := range len(pattern) {
+		if splitLen == 0 || len(pattern)%splitLen != 0 {
+			continue
+		}
+
+		var curr []string
+		for j := range len(pattern) / splitLen {
+			curr = append(curr, pattern[j*splitLen:(j+1)*splitLen])
+		}
+
+		for _, c := range curr {
+			if c != curr[0] {
+				continue main
+			}
+		}
+
+		return true
+	}
+
+	return false
+
+}

@@ -17,12 +17,18 @@ var dayTwo = &cobra.Command{
 			return err
 		}
 
-		partA, err := solutions.Day02PartA(txt, true)
+		partA, err := solutions.Day02PartA(txt, false)
+		if err != nil {
+			return err
+		}
+
+		partB, err := solutions.Day02PartB(txt, false)
 		if err != nil {
 			return err
 		}
 
 		fmt.Println("Part A:", partA)
+		fmt.Println("Part B:", partB)
 
 		return nil
 	},

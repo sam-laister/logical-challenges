@@ -21,3 +21,20 @@ func TestDay02PartA(t *testing.T) {
 		t.Errorf("Day01PartA() = %d, want %d", got, want)
 	}
 }
+
+func TestDay02PartB(t *testing.T) {
+	input, err := os.ReadFile("../inputs/2-sample.txt")
+	if err != nil {
+		t.Fatalf("failed to read sample input: %v", err)
+	}
+
+	got, err := Day02PartB(string(input), true)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	want := 4174379265
+	if got != want {
+		t.Errorf("Day01PartB() = %d, want %d", got, want)
+	}
+}
