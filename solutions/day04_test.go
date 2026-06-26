@@ -11,12 +11,12 @@ func TestDay04PartA(t *testing.T) {
 		t.Fatalf("failed to read sample input: %v", err)
 	}
 
-	got, err := Day04PartA(string(input), true)
+	got, err := Day04PartA(string(input), false)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	want := 0
+	want := 13
 	if got != want {
 		t.Errorf("Day04PartA() = %d, want %d", got, want)
 	}
@@ -33,7 +33,7 @@ func TestDay04PartB(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	want := 0
+	want := 43
 	if got != want {
 		t.Errorf("Day04PartB() = %d, want %d", got, want)
 	}
